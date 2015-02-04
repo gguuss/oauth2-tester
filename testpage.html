@@ -1,0 +1,33 @@
+<html>
+  <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script');
+    po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://plus.google.com/js/client:plusone.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(po, s);
+  })();
+  </script>
+<body>
+  <div id="gConnect">
+  <button class="g-signin"
+    data-scope="https://www.googleapis.com/auth/plus.login"
+    data-requestvisibleactions="http://schema.org/AddAction"
+    data-clientId="REPLACE_ME"
+    data-accesstype="offline"
+    data-callback="onSigninCallback"
+    data-theme="dark"
+    data-cookiepolicy="single_host_origin">
+  </button>
+  <textarea style="width:500px; height: 250px" id="console">
+  </textarea>
+  <script>
+  function onSigninCallback(auth){
+    console.log(auth);
+    document.getElementById('console').value = JSON.stringify(auth, undefined, 2);
+  }
+  </script>
+  </div>
+</body>
+
+</html>
