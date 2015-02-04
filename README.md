@@ -18,4 +18,5 @@ for the utility / test page.
 
 Accepted commads are:
 * code - code exchange, requires <code>
+* ioscode - code exchange from iOS
 * call - API call, requires <access token> / <refresh token>

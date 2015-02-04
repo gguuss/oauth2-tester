@@ -27,6 +27,10 @@ if (ARGV.length < 2)
   puts "Usage: oauth2-tester.rb <authorization code> <access token> <refresh token>\n\n";
 end
 
+command = ARGV[0]
+code = ARGV[1]
+token = { :access_token => ARGV[1], :refresh_token => ARGV[2] }
+
 
 # Configuration
 # See the README.md for getting the OAuth 2.0 client ID and
@@ -37,25 +41,21 @@ APPLICATION_NAME = 'OAuth 2.0 tester'
 
 # Build the global client
 $credentials = Google::APIClient::ClientSecrets.load
+
 $authorization = Signet::OAuth2::Client.new(
     :authorization_uri => $credentials.authorization_uri,
     :token_credential_uri => $credentials.token_credential_uri,
     :client_id => $credentials.client_id,
     :client_secret => $credentials.client_secret,
-    :redirect_uri => $credentials.redirect_uris.first,
+    :redirect_uri => (command == "code") ? $credentials.redirect_uris.first : "urn:ietf:wg:oauth:2.0:oob",
     :scope => "profile")
 $client = Google::APIClient.new
 
 
-command = ARGV[0]
-code = ARGV[1]
-token = { :access_token => ARGV[1], :refresh_token => ARGV[2] }
-
-if (command == "code")
+if (command == "code" || command == "ioscode")
   codeExchange(code)
 end
 
 if (command == "call")
   apiCall(token)
 end
-
