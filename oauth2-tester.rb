@@ -55,7 +55,9 @@ $client = Google::APIClient.new
 if (command == "code" || command == "ioscode")
   codeExchange(code)
 end
-
 if (command == "call")
   apiCall(token)
+end
+if (command == "info")
+  tokeninfo(token)
 end

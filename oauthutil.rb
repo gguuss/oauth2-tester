@@ -85,6 +85,14 @@ def apiCall(token)
 end
 
 
+def tokeninfo(token)
+  $client.authorization.update_token!(token)
+  oauth2 = $client.discovered_api('oauth2','v2')
+
+  puts $client.execute(oauth2.tokeninfo, token).response.body
+end
+
+
 ##
 # Disconnect the user by revoking the stored token and removing session objects.
 def disconnect(token)
@@ -100,4 +108,3 @@ def disconnect(token)
   request.use_ssl = true
   status request.get(uri.request_uri).code
 end
-
