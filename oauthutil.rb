@@ -85,6 +85,8 @@ def apiCall(token)
 end
 
 
+##
+# Gets information about an access / ID token for validation.
 def tokeninfo(token)
   $client.authorization.update_token!(token)
   oauth2 = $client.discovered_api('oauth2','v2')

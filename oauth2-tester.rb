@@ -24,7 +24,11 @@ require 'uri'
 load 'oauthutil.rb'
 
 if (ARGV.length < 2)
-  puts "Usage: oauth2-tester.rb <authorization code> <access token> <refresh token>\n\n";
+  puts "Usage: oauth2-tester.rb <command> <authorization code> || <access/id token> <refresh token>\n\n"
+  puts "  Commands: "
+  puts "    'code' - Accepts and echanges an authorization code for tokens"
+  puts "    'call' - Accepts an access token and makes an API call"
+  puts "    'info' - Accepts an ID or access token and retrieves information about it"
 end
 
 command = ARGV[0]
