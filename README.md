@@ -14,7 +14,7 @@ for the utility / test page.
 
 # Usage
 
-`oauth2-tester.rb command <code> || <access token> <refresh token>`
+`oauth2-tester.rb command <code> || <access token> <refresh token> <id token>`
 
 Accepted commads are:
 * code - code exchange, requires `<code>`
